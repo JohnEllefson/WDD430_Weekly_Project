@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-xs-12" style="margin-bottom: 15px">
         <h3 class="panel-title">
-          <strong style="font-size: 1.5em">{{ selectedContact.name }}</strong>
+          <strong style="font-size: 1.5em">{{ contact.name }}</strong>
         </h3>
       </div>
     </div>
@@ -12,8 +12,8 @@
     <div class="row">
       <div class="col-xs-7">
         <img
-          [src]="selectedContact.imageUrl"
-          alt="{{ selectedContact.name }}"
+          [src]="contact.imageUrl"
+          alt="{{ contact.name }}"
           class="img-responsive"
           style="max-height: 100px; max-width: 100%"
         />
@@ -32,12 +32,12 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12">
-      <h4><strong>Email: </strong>{{ selectedContact.email }}</h4>
+      <h4><strong>Email: </strong>{{ contact.email }}</h4>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
-      <h4><strong>Phone: </strong>{{ selectedContact.phone }}</h4>
+      <h4><strong>Phone: </strong>{{ contact.phone }}</h4>
       </div>
     </div>
   </div>
