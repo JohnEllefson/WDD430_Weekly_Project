@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Document } from '../document.model';
 
 @Component({
   selector: 'cms-document-item',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './document-item.component.css'
 })
 export class DocumentItemComponent {
-
+  @Input() document: Document = {
+    id: 1,
+    name: 'Sample Document',
+    description: 'This is a sample document description.',
+    url: 'https://example.com/sample-document.pdf',
+    children: []
+  };
 }
