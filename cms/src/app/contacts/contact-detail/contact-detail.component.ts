@@ -22,6 +22,9 @@ export class ContactDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const id = params['id'];
       this.contact = this.contactService.getContact(id);
+      if (this.contact.imageUrl === ' ') {
+        this.contact.imageUrl = '../../assets/images/fredFlintstone.png';
+      }
     });
   }
 

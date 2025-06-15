@@ -9,7 +9,7 @@ import { Document } from '../document.model';
 })
 export class DocumentItemComponent {
   @Input() document: Document = {
-    id: 1,
+    id: '1',
     name: 'Sample Document',
     description: 'This is a sample document description.',
     url: 'https://example.com/sample-document.pdf',

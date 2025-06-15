@@ -22,7 +22,7 @@ export class DocumentService {
     return this.documents.slice();
   }
 
-  getDocument(id: number): Document | undefined {
+  getDocument(id: string): Document | undefined {
     return this.documents.find((document) => document.id === id);
   }
 
@@ -43,7 +43,7 @@ export class DocumentService {
     }
 
     this.maxDocumentId++;
-    newDocument.id = this.maxDocumentId;
+    newDocument.id = this.maxDocumentId.toString();
     this.documents.push(newDocument);
     this.documentListChangedEvent.next(this.documents.slice());
   }
