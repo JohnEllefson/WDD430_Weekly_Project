@@ -13,16 +13,23 @@ import { ContactService } from '../contact.service';
 export class ContactListComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   contacts: Contact[] = [];
+  term = '';
 
   constructor(private contactService: ContactService) {}
 
   ngOnInit() {
-    this.contacts = this.contactService.getContacts();
+    this.contactService.getContacts();
     this.subscription = this.contactService.contactListChangedEvent.subscribe(
       (contactsList: Contact[]) => {
         this.contacts = contactsList;
       }
     );
+  }
+
+  search(value: string) {
+    if (value && value.length > 0) {
+      this.term = value;
+    }
   }
 
   ngOnDestroy() {

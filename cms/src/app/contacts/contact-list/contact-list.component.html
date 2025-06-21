@@ -1,20 +1,38 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-      <strong style="font-size: 1.5em">Contacts</strong>
-      <a
-        class="btn btn-success btn-md pull-right"
-        style="color: white"
-        [routerLink]="['new']"
-        >New Contact</a>
-    </h3>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <span class="title pad-left-right" style="font-size: 1.5em; margin-left: 0.7em; font-weight: bold;"
+            >Contacts</span
+          >
+        </div>
+        <div class="row">
+          <div class="input-group pull-left pad-left-right col-xs-7" style="margin-left: 1em">
+            <input
+              #searchBox
+              type="text"
+              class="form-control"
+              placeholder="Enter a search value"
+              (keyup)="search(searchBox.value)"
+            />
+            <div class="glyphicon glyphicon-search input-group-addon"
+              (click)="search(searchBox.value)"
+            ></div>
+          </div>
+          <div class="pull-right pad-left-right" style="margin-right: 1em">
+            <a class="btn btn-success" [routerLink]="['new']">New Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12">
         <div cdkDropList id="contactList" [cdkDropListData]="contacts">
           <div
-            *ngFor="let contact of contacts"
+            *ngFor="let contact of contacts | contactsFilter: searchBox.value"
             cdkDrag
             [cdkDragData]="contact"
             [cdkDragDisabled]="!contact"

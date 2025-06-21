@@ -4,7 +4,7 @@
   </div>
   <span class="pull-right">
     <img
-      [src]="contact.imageUrl !== ' ' ? contact.imageUrl : '../../assets/images/fredFlintstone.png'"
+      [src]="contact.imageUrl ? contact.imageUrl : '../../assets/images/fredFlintstone.png'"
       alt="{{ contact.name }}"
       class="img-responsive"
       style="max-height: 50px"
