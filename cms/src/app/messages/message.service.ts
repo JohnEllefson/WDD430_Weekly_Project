@@ -31,7 +31,7 @@ export class MessageService {
 
   getMessages() {
     this.http
-      .get<Message[]>('https://wdd430-dc1db-default-rtdb.firebaseio.com/messages.json')
+      .get<Message[]>('https://wdd430-5a747-default-rtdb.firebaseio.com/messages.json')
       .subscribe(
         (messages: Message[]) => {
           this.messages = messages;
@@ -48,7 +48,7 @@ export class MessageService {
     const messagesString = JSON.stringify(this.messages);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http
-      .put('https://wdd430-dc1db-default-rtdb.firebaseio.com/messages.json', messagesString, {
+      .put('https://wdd430-5a747-default-rtdb.firebaseio.com/messages.json', messagesString, {
         headers
       })
       .subscribe(() => {

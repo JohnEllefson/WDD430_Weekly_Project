@@ -22,7 +22,7 @@ export class ContactService {
 
   getContacts() {
     this.http
-      .get<Contact[]>('https://wdd430-dc1db-default-rtdb.firebaseio.com/contacts.json')
+      .get<Contact[]>('https://wdd430-5a747-default-rtdb.firebaseio.com/contacts.json')
       .subscribe(
         (contacts: Contact[]) => {
           this.contacts = contacts;
@@ -39,7 +39,7 @@ export class ContactService {
     const contactsString = JSON.stringify(this.contacts);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http
-      .put('https://wdd430-dc1db-default-rtdb.firebaseio.com/contacts.json', contactsString, {
+      .put('https://wdd430-5a747-default-rtdb.firebaseio.com/contacts.json', contactsString, {
         headers
       })
       .subscribe(() => {

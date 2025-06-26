@@ -22,7 +22,7 @@ export class DocumentService {
 
   getDocuments() {
     this.http
-      .get<Document[]>('https://wdd430-dc1db-default-rtdb.firebaseio.com/documents.json')
+      .get<Document[]>('https://wdd430-5a747-default-rtdb.firebaseio.com/documents.json')
       .subscribe(
         (documents: Document[]) => {
           this.documents = documents;
@@ -44,7 +44,7 @@ export class DocumentService {
     const documentsString = JSON.stringify(this.documents);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http
-      .put('https://wdd430-dc1db-default-rtdb.firebaseio.com/documents.json', documentsString, {
+      .put('https://wdd430-5a747-default-rtdb.firebaseio.com/documents.json', documentsString, {
         headers
       })
       .subscribe(() => {
