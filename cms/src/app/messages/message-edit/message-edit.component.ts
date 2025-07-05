@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Message } from '../message.model';
 import { MessageService } from '../message.service';
+import { Contact } from '../../contacts/contact.model';
 
 @Component({
   selector: 'cms-message-edit',
@@ -9,7 +10,7 @@ import { MessageService } from '../message.service';
   styleUrl: './message-edit.component.css'
 })
 export class MessageEditComponent {
-  currentSender = 'John';
+  currentSenderId = '101';
   @ViewChild('subject') subjectInputRef: ElementRef;
   @ViewChild('msgText') messageInputRef: ElementRef;
 
@@ -18,7 +19,12 @@ export class MessageEditComponent {
   onSendMessage() {
     const subject = this.subjectInputRef.nativeElement.value;
     const msgText = this.messageInputRef.nativeElement.value;
-    const message = new Message('1', subject, msgText, this.currentSender);
+    const message = new Message(
+      '1',
+      subject,
+      msgText,
+      new Contact(this.currentSenderId, '', '', '', '', null)
+    );
     this.messageService.addMessage(message);
   }
 

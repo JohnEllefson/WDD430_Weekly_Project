@@ -21,19 +21,31 @@ export class ContactDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       const id = params['id'];
-      this.contact = this.contactService.getContact(id);
-      if (!this.contact.imageUrl || this.contact.imageUrl === ' ') {
-        this.contact.imageUrl = '../../assets/images/fredFlintstone.png';
+
+      // Case 1: contacts already loaded
+      if (this.contactService.contacts.length > 0) {
+        this.setContact(id);
+      } else {
+        // Case 2: wait for contact list to load
+        this.contactService.contactListChangedEvent.subscribe(() => {
+          this.setContact(id);
+        });
       }
     });
   }
 
-  onDelete() {
-    if (this.contact) {
-      this.contactService.deleteContact(this.contact);
-      this.router.navigateByUrl('/contacts');
-    } else {
-      alert('No contact selected for deletion.');
+  private setContact(id: string) {
+    this.contact = this.contactService.getContact(id);
+
+    if (this.contact && (!this.contact.imageUrl || this.contact.imageUrl.trim() === '')) {
+      this.contact.imageUrl = '../../assets/images/fredFlintstone.png';
     }
+  }
+
+  onDelete() {
+    if (!this.contact) return;
+
+    this.contactService.deleteContact(this.contact);
+    this.router.navigate(['/contacts']);
   }
 }
